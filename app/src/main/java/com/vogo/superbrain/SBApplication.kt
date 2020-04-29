@@ -8,12 +8,12 @@ import com.vogo.superbrain.frameworks.di.module.viewModelModules
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
-class SuperBrainVN : Application() {
+class SBApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
         startKoin{
-            androidContext(this@SuperBrainVN)
+            androidContext(this@SBApplication)
             listOf(modules(appModule, networkModule, viewModelModules, engineModule))
         }
     }

@@ -1,9 +1,9 @@
-package com.vogo.lib.views.activities
+package com.vogo.lib.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 
-open class ParentSplashActivity : AppCompatActivity() {
+open class ParentLoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

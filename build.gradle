@@ -11,7 +11,8 @@ buildscript {
                 fragment : "2.1.5",
                 ext : "2.1.5"
             ],
-            groupie : "2.7.2"
+            groupie : "2.7.2",
+            lifecycle : "2.2.0"
         ]
     }
     repositories {

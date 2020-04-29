@@ -1,5 +1,7 @@
 apply plugin: 'com.android.application'
 
+apply plugin: 'kotlin-kapt'
+
 apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
@@ -14,6 +16,7 @@ android {
         versionCode 1
         versionName "1.0"
         flavorDimensions "default"
+        multiDexEnabled true
     }
     dataBinding {
         enabled = true
@@ -38,18 +41,21 @@ android {
         def DUMMY_API = "DUMMY_API"
 
         dev {
-            resValue "string", "app_name", "SuperBrainVN"
+            resValue "string", "app_name", "SBApplication"
             buildConfigField("boolean", LOG, "true")
             buildConfigField("boolean", DUMMY_API, "true")
             buildConfigField "String", BASE_URL, '"http://35.197.159.99"'
         }
 
         prod {
-            resValue "string", "app_name", "SuperBrainVN"
+            resValue "string", "app_name", "SBApplication"
             buildConfigField("boolean", LOG, "false")
             buildConfigField("boolean", DUMMY_API, "false")
             buildConfigField "String", BASE_URL, '"https://wiet.com"'
         }
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
 }
 
@@ -57,18 +63,21 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':lib')
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}"
-    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.appcompat:appcompat:1.2.0-beta01'
     implementation 'androidx.core:core-ktx:1.2.0'
     implementation "androidx.constraintlayout:constraintlayout:${versions.constraintlayout}"
 
     // Implement Koin
-    implementation "org.koin:koin-androidx-scope:${versions.koin.core}"
     implementation "org.koin:koin-androidx-viewmodel:${versions.koin.viewmodel}"
-    implementation "org.koin:koin-androidx-fragment:${versions.koin.fragment}"
-    implementation "org.koin:koin-androidx-ext:${versions.koin.ext}"
+    implementation "org.koin:koin-core:${versions.koin.core}"
 
     // Implement Groupie
     implementation 'com.xwray:groupie:2.7.2'
     implementation 'com.xwray:groupie-kotlin-android-extensions:2.7.2'
+
+    // Lifecycle
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-livedata:2.2.0"
 
 }
