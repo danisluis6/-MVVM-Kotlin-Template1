@@ -10,7 +10,8 @@ buildscript {
                 viewmodel : "2.1.5",
                 fragment : "2.1.5",
                 ext : "2.1.5"
-            ]
+            ],
+            groupie : "2.7.2"
         ]
     }
     repositories {

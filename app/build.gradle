@@ -38,14 +38,14 @@ android {
         def DUMMY_API = "DUMMY_API"
 
         dev {
-            resValue "string", "app_name", "Wiet Debug"
+            resValue "string", "app_name", "SuperBrainVN"
             buildConfigField("boolean", LOG, "true")
             buildConfigField("boolean", DUMMY_API, "true")
             buildConfigField "String", BASE_URL, '"http://35.197.159.99"'
         }
 
         prod {
-            resValue "string", "app_name", "Wiet"
+            resValue "string", "app_name", "SuperBrainVN"
             buildConfigField("boolean", LOG, "false")
             buildConfigField("boolean", DUMMY_API, "false")
             buildConfigField "String", BASE_URL, '"https://wiet.com"'
@@ -66,5 +66,9 @@ dependencies {
     implementation "org.koin:koin-androidx-viewmodel:${versions.koin.viewmodel}"
     implementation "org.koin:koin-androidx-fragment:${versions.koin.fragment}"
     implementation "org.koin:koin-androidx-ext:${versions.koin.ext}"
+
+    // Implement Groupie
+    implementation 'com.xwray:groupie:2.7.2'
+    implementation 'com.xwray:groupie-kotlin-android-extensions:2.7.2'
 
 }
