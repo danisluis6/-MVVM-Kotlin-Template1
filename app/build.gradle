@@ -13,7 +13,7 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        flavorDimensions "default"
     }
     dataBinding {
         enabled = true
@@ -31,9 +31,25 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    productFlavors {
 
-    ext {
+        def BASE_URL = "BASE_URL"
+        def LOG = "LOG"
+        def DUMMY_API = "DUMMY_API"
 
+        dev {
+            resValue "string", "app_name", "Wiet Debug"
+            buildConfigField("boolean", LOG, "true")
+            buildConfigField("boolean", DUMMY_API, "true")
+            buildConfigField "String", BASE_URL, '"http://35.197.159.99"'
+        }
+
+        prod {
+            resValue "string", "app_name", "Wiet"
+            buildConfigField("boolean", LOG, "false")
+            buildConfigField("boolean", DUMMY_API, "false")
+            buildConfigField "String", BASE_URL, '"https://wiet.com"'
+        }
     }
 }
 
